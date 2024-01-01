@@ -1,6 +1,6 @@
 <?php
 include __DIR__."/../DB/dbcon.php";
-$sql = "SELECT user.id, user.name, user.address, phoneno.phoneNo FROM user LEFT JOIN phoneno ON user.id = phoneno.uid;";
+$sql = "SELECT users.UserID, users.LastName, users.FirstName, users.address, phoneno.phoneNo FROM users LEFT JOIN phoneno ON users.UserID = phoneno.UserID;";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,8 @@ $result = $conn->query($sql);
             <thead>
                 <tr>
                     <th>User ID</th>
-                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
                     <th>Address</th>
                     <th>Phone No</th>
                     <th></th>
@@ -32,20 +33,26 @@ $result = $conn->query($sql);
             </thead>
             <tbody>
                 <?php
-	if ($result->num_rows > 0) {
-	while($row = $result->fetch_assoc()) {?>
-                <tr>
-                    <td> <?php echo $row["id"] ?> </td>
-                    <td> <?php echo $row["name"] ?> </td>
-                    <td> <?php echo $row["address"] ?> </td>
-                    <td> <?php echo $row["phoneNo"]?$row["phoneNo"]:"Not Available" ?> </td>
-                    <td> <button type='button' class='btn btn-danger' )> <a class="text-light"
-                                href="/ABC/Delete/delete.php?id=<?php echo $row['id'] ?>"> Delete </a> </button> </td>
-                    <td> <button type='button' class='btn btn-warning	' )> <a class="text-light"
-                                href="/ABC/Update/update.php?id=<?php echo $row['id'] ?>"> Update </a> </button> </td>
-                </tr>
-                <?php } } ?>
-
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                ?>
+                        <tr>
+                            <td> <?php echo $row["UserID"] ?> </td>
+                            <td> <?php echo $row["LastName"] ?> </td>
+                            <td> <?php echo $row["FirstName"] ?> </td>
+                            <td> <?php echo $row["address"] ?> </td>
+                            <td> <?php echo $row["phoneNo"] ? $row["phoneNo"] : "Not Available" ?> </td>
+                            <td> <button type='button' class='btn btn-danger'>
+                                    <a class="text-light" href="/ABC/Delete/delete.php?id=<?php echo $row['UserID'] ?>"> Delete </a>
+                                </button> </td>
+                            <td> <button type='button' class='btn btn-warning'>
+                                    <a class="text-light" href="/ABC/Update/update.php?id=<?php echo $row['UserID'] ?>"> Update </a>
+                                </button> </td>
+                        </tr>
+                <?php
+                    }
+                }
+                ?>
             </tbody>
         </table>
     </div>

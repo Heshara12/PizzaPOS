@@ -6,7 +6,7 @@ include __DIR__."/../DB/dbcon.php";
 $name= $_POST['name'];
 $address = $_POST['address'];
 
-$sql = "INSERT INTO user (name, address) VALUES ('$name','$address')";
+$sql = "INSERT INTO users (FirstName, address) VALUES ('$name','$address')";
 $result = mysqli_query($conn,$sql);
 
 header("Location:/../ABC/index.php");
