@@ -3,15 +3,16 @@ include __DIR__."/../Header/header.html";
 include __DIR__."/../DB/dbcon.php";
 
 $userID = $_GET['id'];
-$sql = "SELECT users.UserID, users.LastName, users.FirstName, users.address, phoneno.phoneNo FROM users LEFT JOIN phoneno ON users.UserID = phoneno.UserID WHERE users.UserID = $userID"; // Added WHERE clause to filter by the specified user ID
+$sql = "SELECT users.UserID, users.LastName, users.FirstName, users.address, phoneno.phoneNo FROM users LEFT JOIN phoneno ON users.UserID = phoneno.UserID WHERE users.UserID = $userID";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) === 1) {
     $row = mysqli_fetch_assoc($result);
 } else {
     // Handle the case where no user is found
+    echo "User not found!";
+    exit; // Stop execution if the user is not found
 }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,8 +39,7 @@ if (mysqli_num_rows($result) === 1) {
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" value="<?php echo $row["FirstName"] . ' ' . $row["LastName"] ?>">
-                        <!-- Assuming "name" is a combination of "FirstName" and "LastName" -->
+                            aria-describedby="emailHelp" value="<?php echo $row["FirstName"] ?>">
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
@@ -49,7 +49,7 @@ if (mysqli_num_rows($result) === 1) {
                     </div>
                     <div class="mb-3">
                         <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input type="text" name="phone" class="form-control" id=""
+                        <input type="text" name="phone" class="form-control" id="phoneNumber"
                             value="<?php echo $row["phoneNo"] ?>">
                     </div>
                     <div class="mb-3 form-check">

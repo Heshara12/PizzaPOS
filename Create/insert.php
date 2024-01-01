@@ -1,7 +1,8 @@
-<?php 
+<?php
 include __DIR__."/../Header/header.html";
 ?>
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,9 +20,8 @@ include __DIR__."/../Header/header.html";
 <body>
     <div class="container" style="margin-top: 2rem">
         <h2>ADD USER</h2>
-        <div class=" row" style="margin-top: 4rem">
+        <div class="row" style="margin-top: 4rem">
             <div class="col">
-
                 <form action="insert_function.php" method="post">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -30,8 +30,12 @@ include __DIR__."/../Header/header.html";
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Address </label>
+                        <label for="exampleInputPassword1" class="form-label">Address</label>
                         <input type="text" name="address" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="text" name="phone" class="form-control" id="phoneNumber" required>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -39,14 +43,13 @@ include __DIR__."/../Header/header.html";
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-
-
             </div>
         </div>
     </div>
 </body>
 
 </html>
-<?php 
+
+<?php
 include __DIR__."/../Footer/footer.html";
 ?>

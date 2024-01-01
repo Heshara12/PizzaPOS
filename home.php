@@ -1,6 +1,7 @@
 <?php
 
-include("header.php");
+//  include("header.php");
+include __DIR__."/Header/header.html";
 session_start();
 
 $user = $_SESSION['user'];
@@ -22,4 +23,5 @@ else {
 header("Location:index.php?error=Please login to continue");
 }
 
+include __DIR__."/Footer/footer.html";
 ?>
