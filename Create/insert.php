@@ -1,5 +1,6 @@
 <?php
 include __DIR__."/../Header/header.html";
+// include __DIR__."/../Header/header.php";
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ include __DIR__."/../Header/header.html";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Day 9</title>
+    <title>ADD USER</title>
 </head>
 
 <body>
